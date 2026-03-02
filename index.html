@@ -20,35 +20,45 @@
             padding: 30px; 
             border-radius: 8px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            text-align: center; /* Esto centra los títulos y el botón */}
-        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
-        #preview { margin-top: 20px; padding: 20px; border: 1px dashed #444; }
-        .btn { background: #004a99; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; font-weight: bold; }
+            text-align: center;
+            border-top: 6px solid #048964; /* Línea superior verde */
+        }
+        h2 { color: #048964; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        #preview { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border: 1px dashed #048964; 
+            background: #fff;
+            display: flex;
+            justify-content: center;
+        }
+        .btn { background: #048964; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Profesorado CONSUDEC - Firma Institucional</h2>
+        <h2>Firma Institucional</h2>
         <input type="text" id="nombre" placeholder="Nombre y Apellido" oninput="actualizar()">
         <input type="text" id="cargo" placeholder="Cargo o Departamento" oninput="actualizar()">
         <input type="text" id="celular" placeholder="Celular (ej: +54 9 11...)" oninput="actualizar()">
         
         <div id="preview">
-            <table id="firma-final" style="font-family: Arial, sans-serif; color: #333;">
+            <table id="firma-final" style="font-family: Arial, sans-serif; color: #282929; text-align: left;">
                 <tr>
-                    <td style="padding-right: 20px; border-right: 2px solid #004a99;">
+                    <td style="padding-right: 20px; border-right: 2px solid #048964;">
                         <img src="https://i.ibb.co/23Q2pYBz/Logo-CONSUDEC-2025-002-Pdf-1-Editado.png" width="120" alt="Logo">
                     </td>
                     <td style="padding-left: 20px;">
-                        <strong id="out-nombre" style="font-size: 18px; color: #004a99;">Apellido Nombre</strong><br>
-                        <span id="out-cargo" style="font-size: 14px; color: #666;">Cargo</span><br>
-                        <span id="out-celular" style="font-size: 13px;">Teléfono</span><br>
-                        <span style="font-size: 12px; color: #004a99;">www.profesoradoconsudec.edu.ar/</span>
+                        <strong id="out-nombre" style="font-size: 18px; color: #048964;">Nombre Apellido</strong><br>
+                        <span id="out-cargo" style="font-size: 14px; color: #282929; font-weight: bold;">Cargo</span><br>
+                        <span id="out-celular" style="font-size: 13px; color: #666;">Teléfono</span><br>
+                        <span style="font-size: 12px; color: #048964; font-weight: bold; display: block; margin-top: 5px;">www.profesoradoconsudec.edu.ar</span>
                     </td>
                 </tr>
             </table>
         </div>
-        <p><small>Para usar: Selecciona la firma con el mouse, cópiala (Ctrl+C) y pégala en tu Gmail/Outlook.</small></p>
+        <p><small style="color: #666;">Para usar: Selecciona la firma con el mouse, cópiala (Ctrl+C) y pégala en tu Gmail/Outlook.</small></p>
     </div>
 
     <script>
@@ -59,7 +69,6 @@
         }
     </script>
 </body>
-
 </html>
 
 
