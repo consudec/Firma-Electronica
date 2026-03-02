@@ -2,17 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="https://i.ibb.co/qYGWXxrz/Logo-CONSUDEC-2025-002-Pdf-1-Editado-1.png">
-    <title>Profesorado CONSUDEC - Generador de Firma Electrónica</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/23Q2pYBz/Logo-CONSUDEC-2025-002-Pdf-1-Editado.png">
+    <title>Profesorado CONSUDEC - Generador de Firma</title>
     <style>
-     body { 
+        body { 
             font-family: Arial, sans-serif; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
             margin: 0;
-            background-color: #282929; /* El gris oscuro de tu paleta */
+            background-color: #282929; /* GRIS OSCURO DE LA PALETA */
         }
         .container { 
             width: 100%;
@@ -20,12 +20,13 @@
             background: white; 
             padding: 30px; 
             border-radius: 8px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
             text-align: center;
-            border-top: 6px solid #048964; /* Línea superior verde */
+            border-top: 6px solid #048964; /* VERDE INSTITUCIONAL */
         }
-        h2 { color: #048964; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        h2 { color: #048964; margin-top: 0; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
         #preview { 
             margin-top: 20px; 
             padding: 20px; 
@@ -34,49 +35,94 @@
             display: flex;
             justify-content: center;
         }
-        .btn { background: #048964; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; }
+
+        /* ESTILO DEL BOTÓN NUEVO */
+        .btn-copiar {
+            background-color: #048964;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .btn-copiar:hover { background-color: #036d50; }
+        
+        #msg-exito {
+            color: #048964;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none; /* Se oculta hasta que copias */
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h2>CONSUDEC - Firma Institucional</h2>
-        <input type="text" id="nombre" placeholder="Apellido Nombre" oninput="actualizar()">
+        <h2>Firma Institucional</h2>
+        
+        <input type="text" id="nombre" placeholder="Nombre y Apellido" oninput="actualizar()">
         <input type="text" id="cargo" placeholder="Cargo o Departamento" oninput="actualizar()">
 
         <div id="preview">
-            <table id="firma-final" style="font-family: Arial, sans-serif; color: #282929; text-align: left; margin: 0 auto; line-height: 1.2;">
-    <tr>
-        <td style="padding-right: 15px; border-right: 2px solid #048964; vertical-align: middle;">
-            <img src="https://i.ibb.co/23Q2pYBz/Logo-CONSUDEC-2025-002-Pdf-1-Editado.png" width="110" alt="Logo">
-        </td>
-        
-        <td style="padding-left: 15px; vertical-align: middle;">
-            <strong id="out-nombre" style="font-size: 16px; color: #048964;">Nombre Apellido</strong><br>
-            <span id="out-cargo" style="font-size: 13px; color: #282929; font-weight: bold;">Cargo o Departamento</span><br>
-            
-            <div style="font-size: 11px; color: #666; margin-top: 4px;">
-                <span>📍 Esmeralda 759, CABA</span><br>
-                <span>📞 (11) 7078-1110 (int. 100) | 📱 (11) 2857-8186</span>
-            </div>
-            
-            <a href="http://www.profesoradoconsudec.edu.ar" style="font-size: 11px; color: #048964; font-weight: bold; text-decoration: none; display: block; margin-top: 4px;">www.profesoradoconsudec.edu.ar</a>
-        </td>
-    </tr>
-</table>
+            <table id="firma-final" style="font-family: Arial, sans-serif; color: #282929; text-align: left; line-height: 1.2;">
+                <tr>
+                    <td style="padding-right: 15px; border-right: 2px solid #048964; vertical-align: middle;">
+                        <img src="https://i.ibb.co/23Q2pYBz/Logo-CONSUDEC-2025-002-Pdf-1-Editado.png" width="110" alt="Logo">
+                    </td>
+                    <td style="padding-left: 15px; vertical-align: middle;">
+                        <strong id="out-nombre" style="font-size: 16px; color: #048964;">Nombre Apellido</strong><br>
+                        <span id="out-cargo" style="font-size: 13px; color: #282929; font-weight: bold;">Cargo o Departamento</span><br>
+                        
+                        <div style="font-size: 11px; color: #666; margin-top: 4px;">
+                            <span>📍 Esmeralda 759, CABA</span><br>
+                            <span>📞 (11) 7078-1110 (int. 100) | 📱 (11) 2857-8186</span>
+                        </div>
+                        
+                        <span style="font-size: 11px; color: #048964; font-weight: bold; display: block; margin-top: 4px;">www.profesoradoconsudec.edu.ar</span>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <p><small style="color: #666;">Para usar: Selecciona la firma con el mouse, cópiala (Ctrl+C) y pégala en tu Gmail/Outlook.</small></p>
+
+        <button class="btn-copiar" onclick="copiarFirma()">Copiar Firma al Portapapeles</button>
+        <div id="msg-exito">¡Firma copiada correctamente!</div>
+
     </div>
 
     <script>
+        // Actualiza el texto mientras escribes
         function actualizar() {
             document.getElementById('out-nombre').innerText = document.getElementById('nombre').value || "Nombre Apellido";
-            document.getElementById('out-cargo').innerText = document.getElementById('cargo').value || "Cargo";
-            document.getElementById('out-celular').innerText = document.getElementById('celular').value || "Teléfono";
+            document.getElementById('out-cargo').innerText = document.getElementById('cargo').value || "Cargo o Departamento";
+        }
+
+        // Función mágica para copiar la firma con formato (imágenes y colores)
+        function copiarFirma() {
+            const table = document.getElementById('firma-final');
+            const range = document.createRange();
+            range.selectNode(table);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            try {
+                document.execCommand('copy');
+                const msg = document.getElementById('msg-exito');
+                msg.style.display = 'block';
+                setTimeout(() => { msg.style.display = 'none'; }, 3000);
+            } catch (err) {
+                alert('Tu navegador no permite copiar automáticamente. Por favor, selecciona la firma manualmente.');
+            }
+            window.getSelection().removeAllRanges();
         }
     </script>
+
 </body>
 </html>
-
 
 
 
