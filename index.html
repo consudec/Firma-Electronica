@@ -103,7 +103,18 @@
         }
 
         // Función mágica para copiar la firma con formato (imágenes y colores)
-        function copiarFirma() {
+      function copiarFirma() {
+            const nombreVal = document.getElementById('nombre').value;
+            const cargoVal = document.getElementById('cargo').value;
+            const msg = document.getElementById('msg-exito');
+
+            // VALIDACIÓN: Si alguno está vacío, mostramos una alerta y no copiamos
+            if (nombreVal.trim() === "" || cargoVal.trim() === "") {
+                alert("⚠️ Por favor, completa tu Nombre y tu Cargo antes de copiar la firma.");
+                return; // Aquí se detiene la función
+            }
+
+            // Si pasó la validación, procedemos a copiar
             const table = document.getElementById('firma-final');
             const range = document.createRange();
             range.selectNode(table);
@@ -112,7 +123,8 @@
 
             try {
                 document.execCommand('copy');
-                const msg = document.getElementById('msg-exito');
+                msg.innerText = "¡Firma copiada correctamente!";
+                msg.style.color = "#048964"; // Verde si sale bien
                 msg.style.display = 'block';
                 setTimeout(() => { msg.style.display = 'none'; }, 3000);
             } catch (err) {
@@ -124,6 +136,7 @@
 
 </body>
 </html>
+
 
 
 
