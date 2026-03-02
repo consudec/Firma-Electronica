@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Firmas - Mi Instituto</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+        .container { max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        #preview { margin-top: 20px; padding: 20px; border: 1px dashed #444; }
+        .btn { background: #004a99; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Generador de Firma Institucional</h2>
+        <input type="text" id="nombre" placeholder="Nombre y Apellido" oninput="actualizar()">
+        <input type="text" id="cargo" placeholder="Cargo o Departamento" oninput="actualizar()">
+        <input type="text" id="celular" placeholder="Celular (ej: +54 9 11...)" oninput="actualizar()">
+        
+        <div id="preview">
+            <table id="firma-final" style="font-family: Arial, sans-serif; color: #333;">
+                <tr>
+                    <td style="padding-right: 20px; border-right: 2px solid #004a99;">
+                        <img src="https://via.placeholder.com/120x120?text=LOGO" width="120" alt="Logo">
+                    </td>
+                    <td style="padding-left: 20px;">
+                        <strong id="out-nombre" style="font-size: 18px; color: #004a99;">Nombre Apellido</strong><br>
+                        <span id="out-cargo" style="font-size: 14px; color: #666;">Cargo</span><br>
+                        <span id="out-celular" style="font-size: 13px;">Teléfono</span><br>
+                        <span style="font-size: 12px; color: #004a99;">www.mi-instituto.edu.ar</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p><small>Para usar: Selecciona la firma con el mouse, cópiala (Ctrl+C) y pégala en tu Gmail/Outlook.</small></p>
+    </div>
+
+    <script>
+        function actualizar() {
+            document.getElementById('out-nombre').innerText = document.getElementById('nombre').value || "Nombre Apellido";
+            document.getElementById('out-cargo').innerText = document.getElementById('cargo').value || "Cargo";
+            document.getElementById('out-celular').innerText = document.getElementById('celular').value || "Teléfono";
+        }
+    </script>
+</body>
+</html>
